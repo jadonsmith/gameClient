@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Game Client</title>
+		<link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
+	<body>
+        <main id="main">
+            <div id="gameInfo">
+                
+            </div>
+            <ul id ="userList">
+                
+            </ul>
+        </main>
+        <canvas id="gameCanvas" tabindex="1"></canvas>
+        <section id="loading">
+            <header>
+                <h1>Connecting...</h1>
+            </header>
+            <p>Attemping a connection with the server.</p>
+            <p>If this takes longer than a few seconds, try again.</p>
+            <p>The server may be offline, or javascript is disabled on your browser. </p>
+        </section>
+        <section id="intro">
+            <header>
+                <p>Welcome, select a name to begin.</p>
+            </header>
+
+            <div id="nameSelect">
+                User name: <input type="text" id="clientName">
+                <a class="button" onclick="startGame()">Start!</a>
+            </div>
+            <p id="usersPlaying"></p>
+        </section>
+        <img id="background" src="image/background.jpg" class="className" />
+        <script src="js/gameClient.js" type="text/javascript" defer></script>
+        <!--<script src="js/client-variables.js" type="text/javascript" defer></script>
+        <script src="js/client-mouse-controls.js" type="text/javascript" defer></script>
+        <script src="js/client-utils.js" type="text/javascript" defer></script>
+        <script src="js/client-setup.js" type="text/javascript" defer></script>
+        <script src="js/client-loop.js" type="text/javascript" defer></script>-->
+        
+        <!--<script src="js/client-main.js" type="text/javascript" defer></script>-->
+	</body>
+</html>

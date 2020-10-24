@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+*{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+*{
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+html body {
+	background:#111; 
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+    margin: 0px;
+    color:#eee;
+}
+#gameCanvas {
+	position: absolute; 
+	top: 0;
+	left: 0;
+	width: 100vw;
+    height: 100vh;
+    display:none; /* until enabled */
+    z-index:1;
+}
+main, #intro, #loading{
+    margin-left:.5em;
+}
+main, #intro, #loading{
+    display:none; /* until enabled */
+}
+main{
+    float:left;
+    -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+    padding:1em;
+    height:20px;
+    text-shadow: 2px 2px black;
+}
+#gameInfo{
+    opacity:1;
+}
+#loading{
+    color:#666;
+}
+#intro{
+    font-size:1.5em;
+}
+.button{
+    border-style:solid;
+    border-color:#eee;
+    padding:.33em;
+    text-transform: uppercase;
+    font-size:.75em;
+}
+.font-half{
+    font-size:.5em;
+}
+.font-75{
+    font-size:.75em;
+}
+.button:hover{
+    background:#fff;
+    cursor:pointer;
+    color:#000;
+}
+.className {
+    z-index:-1;
+    /*max-width: 100%;
+    max-height: 100%;*/
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
