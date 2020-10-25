@@ -46,6 +46,9 @@ main{
 #gameInfo{
     opacity:1;
 }
+#console{
+    color:#fff;
+}
 #loading{
     color:#666;
 }

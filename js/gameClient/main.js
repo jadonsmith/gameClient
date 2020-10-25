@@ -5,12 +5,38 @@ let server = {
     connected:false,
     state:{}
 }
-
 // local client
 let client = {
     name:undefined,
     ready:false,
     score:0,
+    facing: "left", // left OR right
+    spriteX:0,
+    spriteY:0,
+    keyPresses:{},
+    playerSprite:{
+        current:null,
+        left:{
+            facing: './image/avatar_facing_left.png',
+            moving:[
+                './image/avatar_moving_left0.png',
+                './image/avatar_moving_left1.png',
+                './image/avatar_moving_left2.png',
+                './image/avatar_moving_left3.png'
+            ]
+        },
+        right:{
+            facing: './image/avatar_facing_right.png',
+            moving:[
+                './image/avatar_moving_right0.png',
+                './image/avatar_moving_right1.png',
+                './image/avatar_moving_right2.png',
+                './image/avatar_moving_right3.png'
+            ]
+        }
+    },
+    moving: false,
+    movementStep:0,
 	mouse:{
 		x:null,
 		y:null,
@@ -52,8 +78,16 @@ canvas.width = rect.width * dpr;
 canvas.height = rect.height * dpr;
 let context = canvas.getContext('2d');
 
+let playerSprite = new Image();
+playerSprite.src = './image/sprite_sheet.png'
+
+
 // include the mouse/keyboard control functions
 include("js/gameClient/inputControls.js");
+
+document.getElementById('startButton').addEventListener('click', function(){
+    startGame();
+});
 
 
 // client loop
@@ -93,11 +127,37 @@ function draw(){
     // draw new state
     if(server.state.users){
         server.state.users.forEach(function(user){
+            function drawPlayer(spriteX, spriteY){
+                let width = 128;
+                let height = 128;
+                context.drawImage(playerSprite,spriteX, spriteY,width,height,user.location.x-64,user.location.y-64,width,height);
+            }
             let size = user.size;
             context.beginPath();
             context.arc(user.location.x, user.location.y, size, 0, 2 * Math.PI, true);
             context.fillStyle = user.color;
             context.fill();
+
+            if(client.facing == "left"){
+                if(client.moving){
+                    //moving
+                }else{
+                    client.spriteX = 0;
+                    client.spriteY = 0;
+                    drawPlayer(client.spriteX, client.spriteY);
+                    
+                }
+            }else if (client.facing == "right"){
+                if(client.moving){
+                    //moving
+                }else{
+                    client.spriteX = 0;
+                    client.spriteY = 128;
+                    drawPlayer(client.spriteX, client.spriteY);
+                }
+            }
+            
+
             //console.log(user.guns.dotGun.shots);
             if(user.walls.dots.length){
                 let userWalls = user.walls.dots;
@@ -127,10 +187,11 @@ function draw(){
 
 
 // define a connection to the web socket server
-const WEBSOCKET_SERVER_URL = "ws://game.jadon.me:8080";
+const WEBSOCKET_SERVER_URL = "wss://game.jadon.me:8443";
 let ws = new WebSocket(WEBSOCKET_SERVER_URL);
 
 // include the server functions
+
 include("js/gameClient/serverFunctions.js");
 
 showIntro();

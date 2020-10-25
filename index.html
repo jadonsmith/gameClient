@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Game Client</title>
 		<link rel="icon" type="image/x-icon" href="/image/favicon.ico">
 		<link rel="stylesheet" href="/css/main.css">
@@ -15,6 +15,7 @@
             <ul id ="userList">
                 
             </ul>
+            <div id="console"></div>
         </main>
         <canvas id="gameCanvas" tabindex="1"></canvas>
         <section id="loading">
@@ -32,7 +33,7 @@
 
             <div id="nameSelect">
                 User name: <input type="text" id="clientName">
-                <a class="button" onclick="startGame()">Start!</a>
+                <a class="button" id="startButton" name="startButton">Start!</a>
             </div>
             <p id="usersPlaying"></p>
         </section>

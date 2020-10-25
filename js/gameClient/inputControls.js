@@ -1,11 +1,18 @@
 
 function keyDown(event){
+    if(event.code == "KeyA"){
+        client.facing = "left";
+    }else if(event.code == "KeyD"){
+        client.facing = "right";
+    }
+    client.keyPresses[event.key] = true;
     sendMessage({
         type:"keyDown",
         key:event.code,
     });
 }
 function keyUp(event){
+    client.keyPresses[event.key] = false;
     sendMessage({
         type:"keyUp",
         key:event.code
@@ -48,6 +55,7 @@ function mouseUp(){
 }
 function mouseLeave(){
     console.log("mouseleave");
+    client.mouse.down.active = false;
     sendMessage({
         type:"mouseLeave",
     });
